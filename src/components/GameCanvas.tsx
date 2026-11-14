@@ -59,7 +59,7 @@ interface GameCanvasProps {
 function getSpeedMultiplier(mode: SpeedMode): number {
   switch (mode) {
     case 'relaxed':
-      return 0.5;
+      return 0.65;
     case 'normal':
       return 1.0;
     case 'turbo':
