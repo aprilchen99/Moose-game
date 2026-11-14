@@ -1,0 +1,6 @@
+{
+  "name": "抹茶屋疊疊樂",
+  "description": "日系和風抹茶甜點屋 2D 蛋糕疊疊樂手機遊戲，結合鐘擺物理、精準裁切與連擊加寬機制。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
