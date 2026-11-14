@@ -59,7 +59,7 @@ interface GameCanvasProps {
 function getSpeedMultiplier(mode: SpeedMode): number {
   switch (mode) {
     case 'relaxed':
-      return 0.72;
+      return 0.5;
     case 'normal':
       return 1.0;
     case 'turbo':
@@ -561,11 +561,16 @@ export function GameCanvas({
           const camLerp = 1 - Math.exp(-6.5 * dt);
           s.cameraY += (s.targetCameraY - s.cameraY) * camLerp;
 
-          // Progressive angular frequency scaled by chosen speed challenge
+          // Angular frequency: relaxed mode maintains a steady calm pace regardless of height;
+          // normal and turbo modes accelerate progressively as the tower grows.
           const n = s.tiers.length;
-          const speedMult = getSpeedMultiplier(propsRef.current.speedMode);
-          const omega =
-            (2.15 + 1.85 * (1 - Math.exp(-n / 18)) + Math.min(0.85, n * 0.02)) * speedMult;
+          const activeSpeedMode = propsRef.current.speedMode;
+          const speedMult = getSpeedMultiplier(activeSpeedMode);
+          const baseOmega =
+            activeSpeedMode === 'relaxed'
+              ? 2.15
+              : 2.15 + 1.85 * (1 - Math.exp(-n / 18)) + Math.min(0.85, n * 0.02);
+          const omega = baseOmega * speedMult;
 
           if (s.phase === 'SWINGING') {
             s.swingPhase += omega * dt;

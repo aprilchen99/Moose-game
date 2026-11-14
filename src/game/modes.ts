@@ -8,7 +8,7 @@ export interface ModeOption<T extends string> {
 }
 
 export const SPEED_MODE_OPTIONS: ModeOption<SpeedMode>[] = [
-  { id: 'relaxed', label: '悠閒', hint: '0.7x 慢速' },
+  { id: 'relaxed', label: '悠閒', hint: '0.5x 恆定慢速' },
   { id: 'normal', label: '標準', hint: '1.0x 常速' },
   { id: 'turbo', label: '極速', hint: '1.5x 高速' },
 ];
